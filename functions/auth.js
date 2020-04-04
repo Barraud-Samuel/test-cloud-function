@@ -3,8 +3,6 @@ const admin = require('firebase-admin');
 const db  = admin.firestore();
 
 
-var serviceAccount = require("./service-account");
-
 
 exports.createUserRecord = functions.auth.user().onCreate((user,context) =>{
   const userRef = db.doc(`users/${user.uid}`);

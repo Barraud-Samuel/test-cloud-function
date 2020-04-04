@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 var serviceAccount = require("./service-account");
 admin.initializeApp({
-  //credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert(serviceAccount),
   //databaseURL: "https://tuto-cloud-functions.firebaseio.com"
 });
 
