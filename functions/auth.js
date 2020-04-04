@@ -1,6 +1,9 @@
 const functions = require('firebase-functions');
-//const admin = require('firebase-admin');
-//admin.initializeApp();
+const admin = require('firebase-admin');
+const db  = admin.firestore();
+
+
+var serviceAccount = require("./service-account");
 
 
 exports.createUserRecord = functions.auth.user().onCreate((user,context) =>{
