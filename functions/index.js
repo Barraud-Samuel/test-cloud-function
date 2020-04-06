@@ -26,3 +26,16 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
   }
 });
 
+
+exports.gameCount = functions.firestore.document('users/{qsdfsd}').onCreate(async(snapshot, context)=>{
+  const data = snapshot.data();
+  const userRef = db.doc(`books/${data.uid}`);
+  const userSnap = await userRef.get();
+  const userData = userSnap.data();
+
+  return userRef.update({
+    gameCount: userData.gameCount + 1,
+    testmdr: data
+  });
+});
+
