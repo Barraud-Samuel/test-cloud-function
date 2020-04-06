@@ -39,3 +39,19 @@ exports.gameCount = functions.firestore.document('users/{qsdfsd}').onCreate(asyn
   });
 });
 
+exports.userTrend = functions.firestore.document(`games/{gameID}`).onUpdate((snapshot,context)=>{
+  const before = snapshot.before.data();
+  const after = snapshot.after.data();
+
+  let trend;
+  if (after.score >= before.score) {
+    trend = 'you are improving';
+  }else{
+    trend = 'you are on the decline';
+  }
+
+  const userRef = db.doc(`users/${after.uid}`);
+  return userRef.update({
+    trend
+  });
+});
