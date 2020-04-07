@@ -11,9 +11,11 @@ admin.initializeApp({
 const db  = admin.firestore();
 const authEndpoint  = require('./auth.js');
 const api  = require('./api/index.js');
+const resizeAvatar  = require('./storage.js');
 
 exports.authEndpoint = authEndpoint.createUserRecord;
 exports.api = api.api;
+exports.resizeAvatar = resizeAvatar.resizeAvatar;
 
 exports.helloWorld = functions.https.onRequest((request, response) => {
 
